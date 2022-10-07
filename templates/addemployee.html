@@ -1,0 +1,49 @@
+{% extends 'index.html'%}
+{% block url_title%} Add Employee{% endblock %}
+{% block head%}
+
+<style>
+    input {
+        border: none !important;
+        background: none !important;
+    }
+</style>
+{% endblock %}
+{% block section%}
+<div id="heading">
+    <h1 id="text1">{% block title%} ADD EMPLOYEE{% endblock %}</h1>
+</div>
+{{message}}
+<form class="form" role="form" method="POST" enctype="multipart/form-data" action="{% url 'add_employee' %}">
+    {% csrf_token %}
+    <table class="table">
+        <tbody>
+            <tr>
+                <th scope="row"><label for="emp_name" class="form-label  display-6"><small>EMPLOYEE NAME</small> </label></th>
+                <th scope="row"><input type="text" class="form-control rounded-0" id="emp_name" name="e_name" required></th>
+            </tr>
+            <tr>
+                <th scope="row"><label for="emp_id" class="form-label  display-6"><small>EMPLOYEE ID</small> </label></th>
+                <th scope="row"><input type="text" class="form-control rounded-0" id="emp_id" name="emp_id" required></th>
+            </tr>
+            <tr>
+                <th scope="row"><label for="u_name" class="form-label  display-6"><small>USERNAME</small> </label></th>
+                <th scope="row"><input type="text" class="form-control rounded-0" id="u_name" name="username" required></th>
+            </tr>
+            <tr>
+                <th scope="row"><label for="pass_word" class="form-label  display-6"><small>PASSWORD</small></label></th>
+                <th scope="row"><input type="password" class="form-control rounded-0" id="pass_word" name="password"></th>
+            </tr>
+            <tr>
+                <th scope="row"><label for="doj" class="form-label  display-6"><small>DATE OF JOINING</small></label></th>
+                <th scope="row"><input type="date" class="form-control rounded-0" id="doj" name="doj"></th>
+            </tr>
+        </tbody>
+    </table>
+    <div id="div2" class="text-center p-2">
+        <input type="button" value="GoBack" onclick="Previous()" class="btn btn-danger">
+        <button type="submit" class="btn btn-danger text-center" onclick="checker()">Submit</button>
+        <button type="reset" class="btn btn-danger text-center" onclick="checker()">Reset</button>
+    </div>
+</form>
+{% endblock %}

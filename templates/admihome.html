@@ -1,0 +1,38 @@
+{% extends 'index.html'%}
+
+
+
+{% block head%} 
+<style>
+    .btm-width {
+        width: 100%;
+    }
+</style>
+{% endblock %}
+
+{% block section%}
+<div id="div2" class="text-center p-2">
+    <a class="btn btn-danger btn-lg btm-width" href="add_employee" role="button">ADD EMPLOYEE</a>
+</div>
+<div id="div2" class="text-center p-2">
+    <a class="btn btn-danger btn-lg btm-width" href="emp_table" role="button">EMPLOYEE TABLE</a>
+</div>
+<div id="div2" class="text-center p-2">
+    <a class="btn btn-danger btn-lg btm-width" href="add_clint" role="button">ADD CLIENT</a>
+</div>
+<div id="div2" class="text-center p-2">
+    <a class="btn btn-danger btn-lg btm-width" href="add_agent" role="button">ADD AGENT</a>
+</div>
+<div id="div2" class="text-center p-2">
+    <a class="btn btn-danger btn-lg btm-width" href="tableview" role="button">VIEW TABLE</a>
+</div>
+
+<div id="div2" class="text-center p-2">
+    <a class="btn btn-danger btn-lg btm-width" href="donetable" role="button">DONE TABLE</a>
+</div>
+<div id="div2" class="text-center p-2">
+    <a class="btn btn-danger btm-width" href="{% url 'logout' %}">LOGOUT </a>
+</div>
+
+
+{% endblock %}

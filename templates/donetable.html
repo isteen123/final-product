@@ -1,0 +1,39 @@
+{% extends 'index.html'%}
+{% block url_title%} Done Table{% endblock %}
+{% block search%}
+<input type="button" value="GoBack" onclick="Previous()" class="btn btn-danger">
+<form method="get">
+    {{myFilter.form}}
+    <button class="btn btn-danger" type="submit">Search</button>
+</form>
+{% endblock %}
+{% block table%}
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Group Name</th>
+            <th scope="col">Agent</th>
+            <th scope="col">Exam code</th>
+            <th scope="col">date</th>
+            <th scope="col">time</th>
+            <th scope="col">Comment</th>
+            <th scope="col">Stastus</th>
+            <th scope="col">Delete</th>
+        </tr>
+    </thead>
+    <tbody class="table-striped">
+        {% for r in result %}
+        <tr>
+            <th scope="row">{{ r.GROUP_NAME }}</th>
+            <td>{{ r.AGENT }}</td>
+            <td>{{ r.EXAM_CODE }}</td>
+            <td>{{ r.DATE }}</td>
+            <td>{{ r.TIME }}</td>
+            <td>{{ r.COMMENT }}</td>
+            <td>{{ r.STASTUS }}</td>
+            <td><a href="delete_done/{{r.id}}" class="btn btn-danger" onclick="checker()">Delete</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

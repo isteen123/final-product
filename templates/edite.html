@@ -1,0 +1,90 @@
+{% extends 'index.html'%}
+{% block url_title%} Edite Page{% endblock %}
+{% block head%}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/css/selectize.bootstrap3.min.css" integrity="sha256-ze/OEYGcFbPRmvCnrSeKbRTtjG4vGLHXgOqsyLFTRjg=" crossorigin="anonymous" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/js/standalone/selectize.min.js" integrity="sha256-+C0A5Ilqmu4QcSPxrlGpaZxJ04VjsRjKu+G82kl5UJk=" crossorigin="anonymous"></script>
+<script>
+    $(document).ready(function () {
+        $('select').selectize({
+            sortField: 'text'
+        });
+    });
+
+    // to clear the selected value.
+    $('form').find('.selectized').each(function (index, element) { element.selectize && element.selectize.clear() })
+
+</script>
+<style>
+    .selectize-input {
+        border: none !important;
+        background: none !important;
+    }
+</style>
+{% endblock %}
+{% block section%}
+<div id="heading">
+    <h1 id="text1">{% block title%} EDIT CLIENT{% endblock %}</h1>
+</div>
+<form class="form" role="form" method="POST" enctype="multipart/form-data" action="edite_table/{{mymember.id}}">
+    {% csrf_token %}
+    <table class="table">
+        <tbody>
+            <tr>
+                <th scope="row"><label for="formGroupExampleInput" class="form-label  display-6"><small>Group Name</small> </label></th>
+                <th scope="row"><input type="text" class="form-control rounded-0" id="formGroupExampleInput" name="g_name" value={{mymember.GROUP_NAME}} required></th>
+            </tr>
+            <tr>
+                <th scope="row"><label for="inputGroupSelect01" class="form-label  display-6"><small>Agent Name</small> </label></th>
+                <th scope="row">
+                    <select class="custom-select" id="inputGroupSelect01" name="agent" required>
+                        <option value="{{mymember.AGENT}}">{{mymember.AGENT}}</option>
+                        {% for i in ag_name %}
+                        <option value="{{i.AGENT_NAME}}">{{i.AGENT_NAME}}</option>
+                        {% endfor %}
+                    </select>
+                </th>
+            </tr>
+            <tr>
+                <th scope="row"><label for="inputGroupSelect02" class="form-label  display-6"><small>Exam Code </small></label></th>
+                <th scope="row">
+                    <input list="dept" class="type custom-select" id="inputGroupSelect02" name="ex_code" value={{mymember.EXAM_CODE}} required>
+                    <datalist id="dept">
+                        {% for i in result %}
+                        <option value="{{i.EXAM_CODE}}">{{i.EXAM_CODE}}</option>
+                        {% endfor %}
+                    </datalist>
+                </th>
+            </tr>
+            <tr>
+                <th scope="row"><label for="inputGroupSelect03" class="form-label  display-6"><small>Time Zone</small></label></th>
+                <th scope="row">
+                    <select class="custom-select" id="inputGroupSelect03" name="t_z">
+                        {% if mymember.T_ZONE == "Null" %}
+                        <option value=""> </option>
+                        {% endif %}
+                        <option value="{{mymember.T_ZONE}}">{{mymember.T_ZONE}}</option>
+                        {% for i in result %}
+                        <option value="{{i}}">{{i}}</option>
+                        {% endfor %}
+                    </select>
+                </th>
+            </tr>
+            <tr>
+                <th scope="row"><label for="inputGroupSelect04" class="form-label  display-6"><small>Exam Date & Time</small></label></th>
+                <th scope="row"><input type="datetime-local" class="form-control rounded-0" id="inputGroupSelect04" name="ex_date" value="{{mymember.ACTUALDATE|date:'Y-m-d'}}T{{mymember.ACTUALDATE|time:'H:i:s'}}"></th>
+            </tr>
+            <tr>
+                <th scope="row"><label for="inputGroupSelect05" class="form-label  display-6"><small>Comment</small></label></th>
+                <th scope="row"><textarea class="form-control" id="inputGroupSelect05" rows="7" name="comment">{{mymember.COMMENT}}</textarea></th>
+            </tr>
+        </tbody>
+    </table>
+    <div id="div2" class="text-center p-2">
+        <input type="button" value="GoBack" onclick="Previous()" class="btn btn-danger">
+        <button type="submit" class="btn btn-danger text-center" onclick="checker()">Submit</button>
+        <button type="reset" class="btn btn-danger text-center" onclick="checker()">Reset</button>
+    </div>
+</form>
+{% endblock %}

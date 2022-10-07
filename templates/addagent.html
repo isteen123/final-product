@@ -1,0 +1,48 @@
+{% extends 'index.html'%}
+{% block url_title%} Add Agent{% endblock %}
+{% block section%}
+<div id="heading">
+    <h1 id="text1">{% block title%} ADD AGENT{% endblock %}</h1>
+</div>
+<div id="div2">
+    <form class="form" role="form" method="POST" enctype="multipart/form-data" action="{% url 'add_agent' %}">
+        {% csrf_token %}
+        <table class="table">
+            <tbody>
+                <tr>
+                    <th scope="row"><label for="formGroupExampleInput" class="form-label  display-6"><small>Agent name:</small> </label></th>
+                    <th scope="row"><input type="text" class="form-control rounded-0" id="formGroupExampleInput" name="name" required></th>
+                </tr>
+                <tr>
+                    <th scope="row"><label for="formGroupExampledate" class="form-label  display-6"><small>Date </small></label></th>
+                    <th scope="row"><input type="date" class="form-control rounded-0" id="formGroupExampledate" name="cdate" required></th>
+                </tr>
+            </tbody>
+        </table>
+        <div id="div2" class="text-center p-2">
+            <input type="button" value="GoBack" onclick="Previous()" class="btn btn-danger">
+            <button type="submit" class="btn btn-danger text-center" onclick="checker()">Submit</button>
+            <button type="reset" class="btn btn-danger text-center">Reset</button>
+        </div>
+    </form>
+    {% endblock %}
+    {% block table%}
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Agent Name</th>
+                <th scope="col">Create Date</th>
+                <th scope="col">Delete</th>
+            </tr>
+        </thead>
+        <tbody class="table-striped">
+            {% for i in ag_name %}
+            <tr>
+                <td>{{i.AGENT_NAME}}</td>
+                <td>{{i.DOJ}}</td>
+                <td><a href="delete_agent/{{i.id}}" class="btn btn-danger" onclick="checker()">Delete</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endblock %}

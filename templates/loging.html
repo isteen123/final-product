@@ -1,0 +1,14 @@
+{% extends 'index.html'%}
+{% block url_title%}Login Page {% endblock %}
+{% block section%}
+<div id="heading">
+    <h1 id="text1">{% block title%} Login {% endblock %}</h1>
+</div>
+<div class="text-center p-2">
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn btn-danger text-center" type="submit">Login</button>
+    </form>
+</div>
+{% endblock %}
