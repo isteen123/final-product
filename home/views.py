@@ -142,7 +142,7 @@ def delete_done(request, id):
 @login_required
 def donetable(request):
     orderbyList = ['DATE','TIME']
-    stu_v=clint.objects.filter(STASTUS='done').order_by(*orderbyList)
+    stu_v=clint.objects.filter(STASTUS='Done').order_by(*orderbyList)
     myFilter=OrderFilter(request.GET, queryset=stu_v)
     stu_v=myFilter.qs
 
