@@ -16,11 +16,6 @@
     $('form').find('.selectized').each(function (index, element) { element.selectize && element.selectize.clear() })
 
 </script>
-<script>
-    function Previous() {
-        window.history.back()
-    }
-</script>
 <style>
     .selectize-input {
         border: none !important;
@@ -84,7 +79,7 @@
         </tbody>
     </table>
     <div id="div2" class="text-center p-2">
-        <input type="button" value="GoBack" onclick="Previous()" class="btn btn-danger">
+        <a href={% url 'index' %} class="btn btn-danger">Home</a>
         <button type="submit" class="btn btn-danger text-center" onclick="checker()">Submit</button>
         <button type="reset" class="btn btn-danger text-center" onclick="checker()">Reset</button>
     </div>
