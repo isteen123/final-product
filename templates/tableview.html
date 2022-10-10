@@ -1,7 +1,7 @@
 {% extends 'index.html'%}
 {% block url_title%}Table Page {% endblock %}
 {% block search%}
-<input type="button" value="GoBack" onclick="Previous()" class="btn btn-danger">
+<a href={% url 'index' %} class="btn btn-danger">Home</a>
 <form method="get">
     {{myFilter.form}}
     <button class="btn btn-danger" type="submit">Search</button>
