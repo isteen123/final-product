@@ -274,3 +274,11 @@ def index(request):
     elif request.user.is_staff:
         return render(request, 'home.html')
     return render(request, 'loging.html')
+
+@login_required
+def add_exid(request,id):
+    commnt = request.POST['g_name']
+    member=clint.objects.get(id=id)
+    member.COMMENTS=commnt
+    member.save()
+    return HttpResponseRedirect(reverse('tableview'))
