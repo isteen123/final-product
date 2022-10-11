@@ -18,6 +18,7 @@
             <th scope="col">date</th>
             <th scope="col">time</th>
             <th scope="col">Comment</th>
+            <th scope="col">Exam Id</th>
             <th scope="col">Stastus</th>
             <th scope="col">Delete</th>
         </tr>
@@ -31,6 +32,7 @@
             <td>{{ r.DATE }}</td>
             <td>{{ r.TIME }}</td>
             <td>{{ r.COMMENT }}</td>
+            <td>{{ r.EXAM_ID }}</td>
             <td>{{ r.STASTUS }}</td>
             <th><a href="delete_done/{{r.id}}" class="btn btn-danger" onclick="checker()">Delete</a></th>
         </tr>
