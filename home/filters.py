@@ -24,7 +24,7 @@ class OrderFilter(django_filters.FilterSet):
         model = clint
         
         fields = '__all__'
-        exclude = ['DATE','LOCATION','COMMENT','ACTUALDATE','T_ZONE']
+        exclude = ['DATE','LOCATION','COMMENT','ACTUALDATE','T_ZONE','EXAM_ID','GROUP_NAME','AGENT','EXAM_CODE','TIME']
         '''
         widgets = {
             'S_doj':AdminDateWidget(),
