@@ -25,14 +25,14 @@
     <tbody class="table-striped">
         {% for r in result %}
         <tr>
-            <th scope="row">{{ r.GROUP_NAME }}</th>
+            <td scope="row">{{ r.GROUP_NAME }}</td>
             <td>{{ r.AGENT }}</td>
             <td>{{ r.EXAM_CODE }}</td>
             <td>{{ r.DATE }}</td>
             <td>{{ r.TIME }}</td>
             <td>{{ r.COMMENT }}</td>
             <td>{{ r.STASTUS }}</td>
-            <td><a href="delete_done/{{r.id}}" class="btn btn-danger" onclick="checker()">Delete</a></td>
+            <th><a href="delete_done/{{r.id}}" class="btn btn-danger" onclick="checker()">Delete</a></th>
         </tr>
         {% endfor %}
     </tbody>
