@@ -279,6 +279,6 @@ def index(request):
 def add_exid(request,id):
     commnt = request.POST['g_name']
     member=clint.objects.get(id=id)
-    member.COMMENTS=commnt
+    member.EXAM_ID=commnt
     member.save()
     return HttpResponseRedirect(reverse('tableview'))
