@@ -14,6 +14,7 @@ class clint(models.Model):
     ACTUALDATE=models.DateTimeField(null=True,blank=True)
     STASTUS=models.TextField(max_length=25, default = "took")
     T_ZONE=models.TextField(max_length=25, default = "Null")
+    EXAM_ID=models.TextField(max_length=25, null=True,blank=True)
 
 class agent(models.Model):
     AGENT_NAME = models.TextField(max_length=25, null=True,blank=True)
