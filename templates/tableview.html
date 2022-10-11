@@ -6,6 +6,7 @@
     {{myFilter.form}}
     <button class="btn btn-danger" type="submit">Search</button>
 </form>
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search..." title="Type in a name">
 {% endblock %}
 {% block back%}
 
@@ -20,6 +21,7 @@
             <th scope="col">date</th>
             <th scope="col">time</th>
             <th scope="col">Comment</th>
+            <th scope="col">Exam Id</th>
             <th scope="col">Stastus</th>
             <th scope="col"></th>
             <th scope="col">Edit</th>
@@ -30,21 +32,25 @@
         {% for r in result %}
         {% if r.STASTUS == "took" %}
         <tr>
-            <th scope="row">{{ r.GROUP_NAME }}</th>
+            <td scope="row">{{ r.GROUP_NAME }}</td>
             <td>{{ r.AGENT }}</td>
             <td>{{ r.EXAM_CODE }}</td>
             <td>{{ r.DATE }}</td>
             <td>{{ r.TIME }}</td>
             <td>{{ r.COMMENT }}</td>
-            <td>
+            <td><form class="form" role="form" method="POST" enctype="multipart/form-data" action="add_exid/{{r.id}}">
+                {% csrf_token %}
+                <button type="submit" onclick="checker()" ><input type="text" class="form-control rounded-0" id="formGroupExampleInput" name="g_name" value={{r.EXAM_ID}} ></button>
+            </form></td>
+            <th>
                 <form class="form" role="form" method="POST" enctype="multipart/form-data" action="took/{{r.id}}">
                     {% csrf_token %}
                     <button type="submit" class="btn btn-danger" onclick="checker()">Took</button>
                 </form>
-            </td>
-            <td></td>
-            <td><a href="editepage/{{r.id}}" class="btn btn-danger" onclick="checker()">Edit</a></td>
-            <td><a href="delete/{{r.id}}" class="btn btn-danger" onclick="checker()">Delete</a></td>
+            </th>
+            <th></th>
+            <th><a href="editepage/{{r.id}}" class="btn btn-danger" onclick="checker()">Edit</a></th>
+            <th><a href="delete/{{r.id}}" class="btn btn-danger" onclick="checker()">Delete</a></th>
         </tr>
         {% endif %}
         {% if r.STASTUS == "revoked" %}
@@ -55,15 +61,19 @@
             <td class="bg-danger">{{ r.DATE }}</td>
             <td class="bg-danger">{{ r.TIME }}</td>
             <td class="bg-danger">{{ r.COMMENT }}</td>
-            <td>
+            <td><form class="form" role="form" method="POST" enctype="multipart/form-data" action="add_exid/{{r.id}}">
+                {% csrf_token %}
+                <button type="submit" onclick="checker()" ><input type="text" class="form-control rounded-0" id="formGroupExampleInput" name="g_name" value={{r.EXAM_ID}} ></button>
+            </form></td>
+            <th>
                 <form class="form" role="form" method="POST" enctype="multipart/form-data" action="took/{{r.id}}">
                     {% csrf_token %}
                     <button type="submit" class="btn btn-danger" onclick="checker()">Took</button>
                 </form>
-            </td>
-            <td></td>
-            <td><a href="editepage/{{r.id}}" class="btn btn-danger" onclick="checker()">Edit</a></td>
-            <td><a href="delete/{{r.id}}" class="btn btn-danger" onclick="checker()">Delete</a></td>
+            </th>
+            <th></th>
+            <th><a href="editepage/{{r.id}}" class="btn btn-danger" onclick="checker()">Edit</a></th>
+            <th><a href="delete/{{r.id}}" class="btn btn-danger" onclick="checker()">Delete</a></th>
         </tr>
         {% endif %}
 
@@ -75,20 +85,24 @@
             <td>{{ r.DATE }}</td>
             <td>{{ r.TIME }}</td>
             <td>{{ r.COMMENT }}</td>
-            <td>
+            <td><form class="form" role="form" method="POST" enctype="multipart/form-data" action="add_exid/{{r.id}}">
+                {% csrf_token %}
+                <button type="submit" onclick="checker()" ><input type="text" class="form-control rounded-0" id="formGroupExampleInput" name="g_name" value={{r.EXAM_ID}} ></button>
+            </form></td>
+            <th>
                 <form class="form" role="form" method="POST" enctype="multipart/form-data" action="revok/{{r.id}}">
                     {% csrf_token %}
                     <button type="submit" class="btn btn-danger" onclick="checker()">Revoke</button>
                 </form>
-            </td>
-            <td>
+            </th>
+            <th>
                 <form class="form" role="form" method="POST" enctype="multipart/form-data" action="done/{{r.id}}">
                     {% csrf_token %}
                     <button type="submit" class="btn btn-danger" onclick="checker()">Done</button>
                 </form>
-            </td>
-            <td><a href="editepage/{{r.id}}" class="btn btn-danger" onclick="checker()">Edit</a></td>
-            <td><a href="delete/{{r.id}}" class="btn btn-danger" onclick="checker()">Delete</a></td>
+            </th>
+            <th></th>
+            <th><a href="delete/{{r.id}}" class="btn btn-danger" onclick="checker()">Delete</a></th>
         </tr>
         {% endif %}
         {% endfor %}
