@@ -6,9 +6,10 @@
     {{myFilter.form}}
     <button class="btn btn-danger" type="submit">Search</button>
 </form>
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search..." title="Type in a name">
 {% endblock %}
 {% block table%}
-<table class="table table-striped">
+<table class="table table-striped" id="myTable">
     <thead>
         <tr>
             <th scope="col">Group Name</th>
