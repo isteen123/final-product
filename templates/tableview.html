@@ -55,7 +55,7 @@
         {% endif %}
         {% if r.STASTUS == "revoked" %}
         <tr>
-            <th scope="row" class="bg-danger">{{ r.GROUP_NAME }}</th>
+            <td scope="row" class="bg-danger">{{ r.GROUP_NAME }}</td>
             <td class="bg-danger">{{ r.AGENT }}</td>
             <td class="bg-danger">{{ r.EXAM_CODE }}</td>
             <td class="bg-danger">{{ r.DATE }}</td>
@@ -79,7 +79,7 @@
 
         {% if r.STASTUS == "revoke" %}
         <tr>
-            <th scope="row">{{ r.GROUP_NAME }}</th>
+            <td scope="row">{{ r.GROUP_NAME }}</td>
             <td>{{ r.AGENT }}</td>
             <td>{{ r.EXAM_CODE }}</td>
             <td>{{ r.DATE }}</td>
