@@ -23,5 +23,6 @@ urlpatterns = [
     path('add_employee', views.add_employee, name='add_employee'),
     path('emp_table', views.emp_table, name='emp_table'),
     path('delete_emp/<int:id>', views.delete_emp, name='delete_emp'),
+    path('tableview/add_exid/<int:id>',views.add_exid,name='add_exid'),
 
 ]
